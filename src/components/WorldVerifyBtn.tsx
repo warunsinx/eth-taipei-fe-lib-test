@@ -6,7 +6,7 @@ import {
   VerificationLevel,
   ISuccessResult,
 } from "@worldcoin/idkit";
-import { config } from "@/configuration";
+import { cfg } from "@/configuration";
 
 export default function WorldVerifyBtn() {
   const handleVerify = async (proof: ISuccessResult) => {
@@ -29,14 +29,17 @@ export default function WorldVerifyBtn() {
   return (
     <div>
       <IDKitWidget
-        app_id={config.world.appId as unknown as `app_${string}`}
-        action={config.world.actionId}
+        app_id={cfg.world.appId as unknown as `app_${string}`}
+        action={cfg.world.actionId}
         onSuccess={onSuccess}
         handleVerify={handleVerify}
         verification_level={VerificationLevel.Device}
       >
         {({ open }) => (
-          <button className="border-white p-2 border-2" onClick={open}>
+          <button
+            className="cursor-pointer border-white p-2 border-2"
+            onClick={open}
+          >
             Verify with World ID
           </button>
         )}

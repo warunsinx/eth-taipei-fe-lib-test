@@ -1,4 +1,4 @@
-import { config } from "@/configuration";
+import { cfg } from "@/configuration";
 import { type IVerifyResponse, verifyCloudProof } from "@worldcoin/idkit";
 import { NextApiRequest, NextApiResponse } from "next";
 
@@ -7,8 +7,8 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const proof = req.body;
-  const app_id = config.world.appId;
-  const action = config.world.actionId;
+  const app_id = cfg.world.appId;
+  const action = cfg.world.actionId;
 
   const verifyRes = (await verifyCloudProof(
     proof,
