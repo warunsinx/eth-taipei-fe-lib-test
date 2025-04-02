@@ -1,12 +1,17 @@
 import Image from 'next/image';
+import { sepolia } from 'viem/chains';
 import { useAccount, useEnsAvatar, useEnsName } from 'wagmi';
 
 export const EnsProfile = () => {
   const { address } = useAccount();
-  const { data: name } = useEnsName({ address, chainId: 11155111 });
+  const { data: name } = useEnsName({
+    address,
+    chainId: sepolia.id,
+  });
+  console.log('name', name);
   const { data: avatar } = useEnsAvatar({
     name: name || '',
-    chainId: 11155111,
+    chainId: sepolia.id,
   });
 
   return (
